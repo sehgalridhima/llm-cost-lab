@@ -1,15 +1,15 @@
-# step3.py - wahi sawaal, par doosri company (nakli Claude) se
+# step3.py - the same question, but to a second company (mock Claude)
 
-from nakli_claude import NakliClaude
+from mock_claude import MockClaude
 
-client = NakliClaude()
+client = MockClaude()
 
-jawab = client.messages.create(
+response = client.messages.create(
     model="claude-haiku-5-5",
     max_tokens=200,
-    messages=[{"role": "user", "content": "mujhe coffee ke baare mei btao"}],
+    messages=[{"role": "user", "content": "Tell me about coffee"}],
 )
 
-print("Jawab:", jawab.content[0].text)
-print("Input tokens:", jawab.usage.input_tokens)
-print("Output tokens:", jawab.usage.output_tokens)
+print("Reply:", response.content[0].text)
+print("Input tokens:", response.usage.input_tokens)
+print("Output tokens:", response.usage.output_tokens)

@@ -1,23 +1,23 @@
-# step2.py - ek sawaal ka kharcha nikaalna
+# step2.py - working out the cost of one question
 
-from nakli_openai import NakliOpenAI
+from mock_openai import MockOpenAI
 
-# gpt-6.1-sol ke daam: 10 lakh (1,000,000) tokens ke dollars mein
-INPUT_DAAM = 0.10
-OUTPUT_DAAM = 1.00
+# gpt-6.1-sol prices: dollars per 1 million tokens
+INPUT_PRICE = 0.10
+OUTPUT_PRICE = 1.00
 
-client = NakliOpenAI()
+client = MockOpenAI()
 
-jawab = client.responses.create(
+response = client.responses.create(
     model="gpt-6.1-sol",
-    input="mujhe coffee ke baare mei btao",
+    input="Tell me about coffee",
 )
 
-input_tokens = jawab.usage.input_tokens
-output_tokens = jawab.usage.output_tokens
+input_tokens = response.usage.input_tokens
+output_tokens = response.usage.output_tokens
 
-kharcha = (input_tokens * INPUT_DAAM + output_tokens * OUTPUT_DAAM) / 1_000_000
+cost = (input_tokens * INPUT_PRICE + output_tokens * OUTPUT_PRICE) / 1_000_000
 
 print("Input tokens:", input_tokens)
 print("Output tokens:", output_tokens)
-print(f"Kharcha: ${kharcha:.6f}")
+print(f"Cost: ${cost:.6f}")

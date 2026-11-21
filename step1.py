@@ -1,14 +1,14 @@
-# step1.py - hamara pehla API call (nakli OpenAI ke saath)
+# step1.py - my first API call (with the mock OpenAI client)
 
-from nakli_openai import NakliOpenAI
+from mock_openai import MockOpenAI
 
-client = NakliOpenAI()
+client = MockOpenAI()
 
-jawab = client.responses.create(
+response = client.responses.create(
     model="gpt-6.1-sol",
-    input="mujhe coffee ke baare mei btao",
+    input="Tell me about coffee",
 )
 
-print("Jawab:", jawab.output_text)
-print("Input tokens:", jawab.usage.input_tokens)
-print("Output tokens:", jawab.usage.output_tokens)
+print("Reply:", response.output_text)
+print("Input tokens:", response.usage.input_tokens)
+print("Output tokens:", response.usage.output_tokens)
