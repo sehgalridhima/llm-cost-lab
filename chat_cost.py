@@ -1,6 +1,7 @@
 msg = 50
 total =[]
-for msgs in range(1,31):
+n=30
+for msgs in range(1,n+1):
     total.append(msgs*msg)
 
 sum(total)
